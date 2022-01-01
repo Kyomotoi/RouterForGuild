@@ -1,12 +1,11 @@
 package driver
 
 import (
-	"RouterForGuild/dto/tencent_guild"
+	"RouterForGuild/dto/tencent_guild/websocket"
 	wss "github.com/gorilla/websocket"
 	"sync"
 	"time"
 )
-
 
 type GuildClient struct {
 	version         int
@@ -14,8 +13,8 @@ type GuildClient struct {
 	conn            *wss.Conn
 	mu              sync.Mutex
 	msgQueue        messageChan
-	session         tencent_guild.Session
-	user            tencent_guild.WebSocketUser
+	session         *tencent_guild.Session
+	user            *tencent_guild.WebsocketUser
 	closeChan       closeErrorChan
 	heartBeatTicker *time.Ticker
 }

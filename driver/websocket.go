@@ -1,7 +1,7 @@
 package driver
 
 import (
-	"RouterForGuild/dto/tencent_guild"
+	"RouterForGuild/dto/tencent_guild/websocket"
 	"RouterForGuild/global"
 	"encoding/json"
 	wss "github.com/gorilla/websocket"
@@ -44,18 +44,18 @@ func (c *GuildClient) Connect() error {
 }
 
 func (c *GuildClient) Resume() error {
-	event := &tencent_guild.WebSocketPayload{
-		Data: &tencent_guild.WebSocketResume{
+	event := &tencent_guild.WebsocketPayload{
+		Data: &tencent_guild.WebsocketResumeData{
 			Token:     c.session.Token.GetAuthToken(),
 			SessionID: c.session.ID,
 			Seq:       c.session.LastSeq,
 		},
 	}
-	event.OPCode = tencent_guild.WebsocketResume
+	event.OPCode = tencent_guild.WSResume
 	return c.Write(event)
 }
 
-func (c *GuildClient) Write(message *tencent_guild.WebSocketPayload) error {
+func (c *GuildClient) Write(message *tencent_guild.WebsocketPayload) error {
 	msg, _ := json.Marshal(message)
 
 	c.mu.Lock()
