@@ -2,7 +2,7 @@ package tencent_guild
 
 import "RouterForGuild/global"
 
-type WebSocketAP struct {
+type WebsocketAP struct {
 	URL               string            `json:"url"`
 	Shards            uint32            `json:"shards"`
 	SessionStartLimit SessionStartLimit `json:"session_start_limit"`
@@ -29,7 +29,7 @@ type Session struct {
 	Shards  ShardConfig
 }
 
-type WebSocketUser struct {
+type WebsocketUser struct {
 	ID       string `json:"id"`
 	Username string `json:"username"`
 	Bot      bool   `json:"bot"`

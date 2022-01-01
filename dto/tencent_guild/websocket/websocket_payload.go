@@ -2,20 +2,20 @@ package tencent_guild
 
 type EventType string
 
-type WebSocketPayload struct {
-	WebSocketPayloadBase
+type WebsocketPayload struct {
+	WebsocketPayloadBase
 	Data interface{} `json:"d,omitempty"`
 }
 
-type WebSocketPayloadBase struct {
-	OPCode OPCode    `json:"op"`
+type WebsocketPayloadBase struct {
+	OPCode int    `json:"op"`
 	Seq    uint64    `json:"s,omitempty"`
 	Type   EventType `json:"t,omitempty"`
 }
 
-type WebSocketIdentity struct {
+type WebsocketIdentity struct {
 	Token      string   `json:"token"`
-	Intents    Intent   `json:"intents"`
+	Intents    int      `json:"intents"`
 	Shard      []uint32 `json:"shard"`
 	Properties struct {
 		OS      string `json:"$os,omitempty"`
@@ -24,17 +24,17 @@ type WebSocketIdentity struct {
 	} `json:"$properties,omitempty"`
 }
 
-type WebSocketResume struct {
+type WebsocketResumeData struct {
 	Token     string `json:"token"`
 	SessionID string `json:"session_id"`
 	Seq       uint64 `json:"seq"`
 }
 
-type WebSocketHello struct {
+type WebsocketHello struct {
 	HeartbeatInterval int `json:"heartbeat_interval"`
 }
 
-type WebSocketIsReady struct {
+type WebsocketIsReady struct {
 	Version   int    `json:"version"`
 	SessionID string `json:"session_id"`
 	User      struct {
