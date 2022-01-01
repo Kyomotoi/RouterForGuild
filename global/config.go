@@ -9,14 +9,15 @@ import (
 var Conf *Config
 
 type Config struct {
-	AppID  uint64 `yaml:"app_id"`
-	AppKey string `yaml:"app_key"`
-	Token  string `yaml:"token"`
-	Debug  bool   `yaml:"debug"`
+	AppID   uint64 `yaml:"app_id"`
+	AppKey  string `yaml:"app_key"`
+	Token   string `yaml:"token"`
+	Debug   bool   `yaml:"debug"`
+	Timeout uint64 `yaml:"timeout"`
 }
 
-// ConfigGener ...
-func ConfigGener() error {
+// ConfigGenerator ...
+func ConfigGenerator() error {
 	conf := &Config{
 		AppID:  1234567890,
 		AppKey: "此处填上机器人的签名的密钥",

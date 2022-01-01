@@ -22,7 +22,7 @@ func init() {
 	if err != nil {
 		if os.IsNotExist(err) {
 			log.Warning("检测为初次启动，已于同目录下生成 config.yml，请配置并重新启动！")
-			genErr := global.ConfigGener()
+			genErr := global.ConfigGenerator()
 			if genErr != nil {
 				log.Error("无法创建文件：config.yml，请确认是否给足系统权限")
 			}
